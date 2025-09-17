@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import WhyChoose from './components/WhyChoose'
-import Process from './components/Process'
-import About from './components/About'
-import Portfolio from './components/Portfolio'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-
-export default function App(){
-  return (
-    <div className="min-h-screen bg-charcoal text-ivory font-sans">
-      <Nav />
-      <main className="pt-20">
-        <Hero />
-        <div className="container">
-          <Services />
-          <WhyChoose />
-          <Process />
-          <About />
-          <Portfolio />
-          <Contact />
-        </div>
-      </main>
-      <Footer />
-    </div>
-  )
-}
-=======
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -42,7 +10,7 @@ import About from "./components/About";
 import Portfolio from "./components/Portfolio";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import Admin from "./components/Admin"; // new admin page
+import Admin from "./components/Admin"; // optional admin page
 
 function HomePage() {
   return (
@@ -74,4 +42,3 @@ export default function App() {
     </Router>
   );
 }
->>>>>>> e1d13e65624dea6ed8ab69f738a9d619a169671f
