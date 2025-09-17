@@ -27,7 +27,7 @@ export default function Contact() {
       })
 
       if (res.ok) {
-        setStatus("✅ Inquiry sent successfully!")
+        setStatus(" Inquiry sent successfully!")
         setFormData({ name: "", email: "", phone: "", type: "Project Type", message: "" })
       } else {
         setStatus("❌ Failed to send inquiry")
@@ -97,7 +97,7 @@ export default function Contact() {
         <div className="p-6 rounded-2xl card-glass">
           <h3 className="mb-4">Reach Us</h3>
           <p className="flex items-center gap-2 muted"><FiPhone /> +91 9392985626</p>
-          <p className="flex items-center gap-2 muted"><FiMail /> info@falconspaces.com</p>
+          <p className="flex items-center gap-2 muted"><FiMail /> falconspaces@gmail.com</p>
           <p className="mt-4 muted">Hyderabad, Telangana</p>
 
           <div className="mt-6">
