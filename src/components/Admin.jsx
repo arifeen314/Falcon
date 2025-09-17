@@ -3,19 +3,52 @@ import { useEffect, useState } from "react";
 export default function Admin() {
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [authorized, setAuthorized] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+
+  const ADMIN_PASSWORD = "Falcon123"; // <-- set your password here
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (passwordInput === ADMIN_PASSWORD) {
+      setAuthorized(true);
+    } else {
+      alert("Incorrect password!");
+    }
+  };
 
   useEffect(() => {
+    if (!authorized) return;
+
     fetch("https://falcon-backend-ca8t.onrender.com/api/inquiries")
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setInquiries(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         setLoading(false);
       });
-  }, []);
+  }, [authorized]);
+
+  if (!authorized) {
+    return (
+      <div className="p-6">
+        <h2 className="text-2xl mb-4">Admin Login</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="password"
+            placeholder="Enter admin password"
+            value={passwordInput}
+            onChange={(e) => setPasswordInput(e.target.value)}
+            className="p-2 border rounded mr-2"
+          />
+          <button className="p-2 bg-gold rounded text-black font-semibold">Login</button>
+        </form>
+      </div>
+    );
+  }
 
   if (loading) return <p>Loading inquiries...</p>;
 
@@ -35,7 +68,7 @@ export default function Admin() {
           </tr>
         </thead>
         <tbody>
-          {inquiries.map(i => (
+          {inquiries.map((i) => (
             <tr key={i._id}>
               <td className="border p-2">{i.name}</td>
               <td className="border p-2">{i.email}</td>
